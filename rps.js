@@ -8,69 +8,18 @@ function rockPaperScissors(player1, player2) {
   if(player2 !== "scissors" && player2 !== "rock" && player2 !== "paper" && player2 !== "spock" && player2 !== "lizard"){
     return "Please check your response";
   }
+  // each choice mapped to an array of other choices it can only beat
+  const factors = {
+    rock: ["scissors", "lizard"],
+    paper: ["rock", "spock"],
+    scissors: ["paper", "lizard"],
+    lizard: ["spock", "paper"],
+    spock: ["rock", "scissors"]
+  };
   if(player1==player2){
     return "draw";
   }
- if(player1 === "scissors" && player2 === "rock"){
-    return "player2";
-  }
-  if(player1 === "rock" && player2 === "paper"){
-    return "player2";
-  }
-  if(player1 === "paper" && player2 === "scissors"){
-    return "player2";
-  }
-  if(player1 === "rock" && player2 === "scissors"){
-    return "player1";
-  }
-  if(player1 === "paper" && player2 === "rock"){
-    return "player1";
-  }
-  if(player1 === "scissors" && player2 === "paper"){
-    return "player1";
-  }
-  if(player1 === "spock" && player2 === "lizard"){
-    return "player2";
-  }
-  if(player1 === "scissors" && player2 === "spock"){
-    return "player2";
-  }
-  if(player1 === "lizard" && player2 === "rock"){
-    return "player2";
-  }
-  if(player1 === "spock" && player2 === "paper"){
-    return "player2";
-  }
-  if(player1 === "lizard" && player2 === "scissors"){
-    return "player2";
-  }
-  if(player1 === "paper" && player2 === "lizard"){
-    return "player2";
-  }
-  if(player1 === "rock" && player2 === "spock"){
-    return "player2";
-  }
-  if(player1 === "lizard" && player2 === "spock"){
-    return "player1";
-  }
-  if(player1 === "spock" && player2 === "scissors"){
-    return "player1";
-  }
-  if(player1 === "rock" && player2 === "lizard"){
-    return "player1";
-  }
-  if(player1 === "paper" && player2 === "spock"){
-    return "player1";
-  }
-  if(player1 === "scissors" && player2 === "lizard"){
-    return "player1";
-  }
-  if(player1 === "lizard" && player2 === "paper"){
-    return "player1";
-  }
-  if(player1 === "spock" && player2 === "rock"){
-    return "player1";
-  }
+  return factors[player1].includes(player2) ? "player1" : "player2" ;
 };
 
 // normal occurrence 
@@ -79,9 +28,6 @@ console.log(rockPaperScissors("paper","scissors"));
 console.log(rockPaperScissors("PAPer","sciSSors"));
 // handles errors well
 console.log(rockPaperScissors("papeeer","scissooors"));
-
-
-
 
 
 
